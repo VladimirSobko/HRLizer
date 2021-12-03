@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: -webkit-linear-gradient(45deg, #292929 25%, transparent 25%, transparent 75%, #292929 75%), -webkit-linear-gradient(45deg, #292929 25%, transparent 25%, transparent 75%, #292929 75%) 0.1875em 0.1875em, -webkit-radial-gradient(at 50% 0, #484847, #090909);
+  background: linear-gradient(45deg, #2b2a2a 25%, #10101000 25%, transparent 75%, #212020 75%), linear-gradient(45deg, #252424 25%, transparent 25%, transparent 75%, #272626 75%) 0.1875em 0.1875em, radial-gradient(at 50% 0, #4a4a48, #131212);
+  background-size: 0.375em 0.375em, 0.375em 0.375em, 100% 100%;
+  color: whitesmoke;
+}
+
+#root {
+  height: 100%;
+}
