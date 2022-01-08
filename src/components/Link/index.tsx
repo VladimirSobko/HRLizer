@@ -6,7 +6,7 @@ const StyledLink = styled.a`
   width: auto;
   height: auto;
   color: white;
-  font-size: 16px;
+  font-size: 24px;
 `;
 
 type TProps = {

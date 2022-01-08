@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Header } from 'components/Header';
 import { CustomLink } from 'components/Link';
-import { CustomText } from 'components/Text';
-import { CommonButton } from 'components/Button';
+import { Title } from 'components/Text';
 
-import 'index.css';
+import { ROUTE } from 'constants/routes';
+
 import { checkName } from './helpers';
 
-const HeaderContainer = () => {
+import 'index.css';
+
+type TProps = {
+  user: any;
+  auth: any;
+};
+
+const HeaderContainer: FC<TProps> = ({ user, auth }) => {
   const history = useHistory();
 
   const handleClick = (e: any) => {
     checkName(history, e);
   };
 
+  const handleSignOut = () => {
+    auth.signOut();
+    history.push(ROUTE.LOGIN.PATH);
+  };
+
   return (
     <>
       <Header>
-        <CustomText text="HRLizer" size="50px" />
+        <Title text="HRLizer" size="50px" />
         <div className="header_menu_wrapper">
           <CustomLink
             onClick={(e) => handleClick(e)}
-            name="calendar"
-            text="Календарь"
+            name="sandbox"
+            text="Песочница"
           />
           <CustomLink
             onClick={(e) => handleClick(e)}
@@ -46,10 +58,9 @@ const HeaderContainer = () => {
             name="bookmarks"
             text="Закладки"
           />
-          <CommonButton
-            onClick={() => history.push('/login')}
-            text="Зарегистрироваться"
-          />
+          {user && (
+            <CustomLink onClick={handleSignOut} name="logout" text="Выйти" />
+          )}
         </div>
       </Header>
     </>

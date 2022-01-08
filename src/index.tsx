@@ -1,10 +1,21 @@
-import React, { lazy, Suspense } from 'react';
+import React, { createContext, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware from 'redux-saga';
+
 import reducer from 'store/rootReducer';
+
+import firebase from 'firebase';
+import 'firebase/firestore';
+import 'firebase/auth';
+import { firebaseConfig } from 'constants/firebaseConfig';
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+export const AuthContext = createContext({} as any);
 
 const LazyRouter = lazy(() =>
   import('containers/Router').then(({ RouterContainer }) => ({
@@ -21,10 +32,12 @@ export const store = createStore(
 
 const container = document.getElementById('root');
 ReactDOM.render(
-  <Provider store={store}>
-    <Suspense fallback={<></>}>
-      <LazyRouter />
-    </Suspense>
-  </Provider>,
+  <AuthContext.Provider value={{ firebase, auth, firestore }}>
+    <Provider store={store}>
+      <Suspense fallback={<></>}>
+        <LazyRouter />
+      </Suspense>
+    </Provider>
+  </AuthContext.Provider>,
   container,
 );

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 const StyledText = styled.p`
   width: auto;
   height: auto;
-  color: #3300FF;
+  color: white;
   font-size: 24px;
+  font-family: sans-serif;
 `;
 
 type TProps = {
@@ -13,6 +14,6 @@ type TProps = {
   size: number | string;
 };
 
-export const CustomText: FC<TProps> = ({ text,size, ...props }) => {
+export const Title: FC<TProps> = ({ text,size, ...props }) => {
   return <StyledText {...props}>{text}</StyledText>;
 };

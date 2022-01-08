@@ -1,7 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+
 
 const Board: FC = () => {
-  return <div>Доска кандидатов</div>;
+  return (
+    <h2>Board</h2>
+  )
 };
 
 export default Board;

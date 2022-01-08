@@ -2,8 +2,8 @@ import React, { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  background: #339966;
   color: black;
+  border: 1px solid black;
   width: auto;
   height: 300px;
   margin: 0 auto;
